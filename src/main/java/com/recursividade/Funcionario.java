@@ -1,6 +1,7 @@
 package com.recursividade;
 
 public class Funcionario {
+<<<<<<< HEAD
     private String nome;
     private double salario;
 
@@ -38,4 +39,6 @@ public class Funcionario {
 
         System.out.println(this.nome +":"+ bonus);
     }
+=======
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

@@ -1,5 +1,6 @@
 package com.hash;
 
+<<<<<<< HEAD
 import java.util.Objects;
 
 public class Produto {
@@ -57,4 +58,7 @@ public class Produto {
     public void setPreco(float preco) {
         this.preco = preco;
     }
+=======
+public class Produto {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

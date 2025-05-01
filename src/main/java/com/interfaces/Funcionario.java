@@ -1,5 +1,6 @@
 package com.interfaces;
 
+<<<<<<< HEAD
 public class Funcionario extends Pessoa implements Trabalhador{
 
     private double salario;
@@ -29,4 +30,7 @@ public class Funcionario extends Pessoa implements Trabalhador{
         System.out.println("IDADE: " + getIdade());
         System.out.println("SALÁRIO: " + getSalario());
     }
+=======
+public class Funcionario {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

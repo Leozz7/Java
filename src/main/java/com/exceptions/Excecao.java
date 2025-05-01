@@ -1,5 +1,6 @@
 package com.exceptions;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 
 public class Excecao {
@@ -18,4 +19,7 @@ public class Excecao {
 
         System.out.println("Esse texto será impresso apos o exception");
     }
+=======
+public class Excecao {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

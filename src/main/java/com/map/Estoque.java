@@ -1,5 +1,6 @@
 package com.map;
 
+<<<<<<< HEAD
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,4 +37,7 @@ public class Estoque {
             System.out.println("Esse produto não foi encontrado");
         }
     }
+=======
+public class Estoque {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

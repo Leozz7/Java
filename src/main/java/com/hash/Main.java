@@ -1,5 +1,6 @@
 package com.hash;
 
+<<<<<<< HEAD
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -28,4 +29,7 @@ public class Main {
             System.out.println(pr);
         }
     }
+=======
+public class Main {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

@@ -1,5 +1,6 @@
 package com.interfaces;
 
+<<<<<<< HEAD
 import java.util.Objects;
 
 public abstract class Pessoa {
@@ -44,4 +45,7 @@ public abstract class Pessoa {
     public void mostrarIdade() {
         System.out.println("A idade é "+this.idade);
     }
+=======
+public class Pessoa {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

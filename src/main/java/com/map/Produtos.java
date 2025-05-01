@@ -2,17 +2,24 @@ package com.map;
 
 import java.util.Objects;
 
+<<<<<<< HEAD
 public class Produtos {
+=======
+public class Produto {
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
     private int id;
     private String nome;
     private int quantidade;
 
+<<<<<<< HEAD
     public Produtos(int id, String nome, int quantidade) {
         this.id = id;
         this.nome = nome;
         this.quantidade = quantidade;
     }
 
+=======
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
     @Override
     public String toString() {
         return "Produto{" +
@@ -25,7 +32,11 @@ public class Produtos {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
+<<<<<<< HEAD
         Produtos produto = (Produtos) o;
+=======
+        Produto produto = (Produto) o;
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
         return id == produto.id;
     }
 

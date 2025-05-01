@@ -1,6 +1,7 @@
 package com.recursividade;
 
 public class fibonacci {
+<<<<<<< HEAD
     public static void main(String[] args) {
         int num = 0;
         int aux = 1;
@@ -16,4 +17,6 @@ public class fibonacci {
             fibo = aux + num;
         }
     }
+=======
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

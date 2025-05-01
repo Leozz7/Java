@@ -1,6 +1,7 @@
 package com.mapping;
 
 public class Main {
+<<<<<<< HEAD
     public static void main(String[] args) {
         Estoque estoque = new Estoque();
 
@@ -14,4 +15,6 @@ public class Main {
         System.out.println("\nVerificação de estoque mínimo:");
         estoque.verificarEstoqueMin();
     }
+=======
+>>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }
