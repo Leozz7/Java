@@ -1,12 +1,13 @@
-package com.map;
+package com.map.mapTest01;
 
-<<<<<<< HEAD
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Estoque {
 
-    Map<Integer,Produtos> map = new HashMap<>();
+    Map<Integer, Produtos> map = new HashMap<>();
+
     public void adicionarProduto(Produtos p, int id) {
         map.put(id, p);
     }
@@ -33,11 +34,8 @@ public class Estoque {
         Produtos p = map.get(id);
         if (p != null) {
             p.setQuantidade(p.getQuantidade() + quantidade);
-        } else  {
+        } else {
             System.out.println("Esse produto não foi encontrado");
         }
     }
-=======
-public class Estoque {
->>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }

@@ -1,21 +1,16 @@
-package com.hash;
+package com.map.mapTest02;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
-public class Produto {
-    private int id;
+public class Manga {
+    private Long id;
     private String nome;
     private float preco;
 
-    public Produto(int id, String nome, float preco) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-    }
-
     @Override
     public String toString() {
-        return "Produto{" +
+        return "Manga{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", preco=" + preco +
@@ -25,20 +20,20 @@ public class Produto {
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
-        Produto produto = (Produto) o;
-        return id == produto.id;
+        Manga manga = (Manga) o;
+        return Objects.equals(id, manga.id) && Objects.equals(nome, manga.nome);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hash(id, nome);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -55,6 +50,12 @@ public class Produto {
     }
 
     public void setPreco(float preco) {
+        this.preco = preco;
+    }
+
+    public Manga(Long id, String nome, float preco) {
+        this.id = id;
+        this.nome = nome;
         this.preco = preco;
     }
 }

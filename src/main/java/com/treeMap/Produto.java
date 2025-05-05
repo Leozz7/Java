@@ -1,24 +1,19 @@
-package com.hash;
+package com.treeMap;
 
 import java.util.Objects;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Produto {
-    private int id;
+    private Long id;
     private String nome;
-    private float preco;
-
-    public Produto(int id, String nome, float preco) {
-        this.id = id;
-        this.nome = nome;
-        this.preco = preco;
-    }
+    private int quantidade;
 
     @Override
     public String toString() {
         return "Produto{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", preco=" + preco +
+                ", quantidade=" + quantidade +
                 '}';
     }
 
@@ -26,7 +21,7 @@ public class Produto {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Produto produto = (Produto) o;
-        return id == produto.id;
+        return Objects.equals(id, produto.id);
     }
 
     @Override
@@ -34,11 +29,11 @@ public class Produto {
         return Objects.hashCode(id);
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -50,11 +45,17 @@ public class Produto {
         this.nome = nome;
     }
 
-    public float getPreco() {
-        return preco;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public Produto(String nome, int quantidade) {
+        this.id = ThreadLocalRandom.current().nextLong();
+        this.nome = nome;
+        this.quantidade = quantidade;
     }
 }

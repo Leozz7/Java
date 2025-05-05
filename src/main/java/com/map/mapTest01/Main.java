@@ -1,6 +1,6 @@
-package com.map;
+package com.map.mapTest01;
 
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 
 public class Main {
@@ -29,7 +29,4 @@ public class Main {
         e.removerProduto(3);
         e.listarProdutos();
     }
-=======
-public class Main {
->>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 }
