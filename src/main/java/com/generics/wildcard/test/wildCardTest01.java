@@ -1,4 +1,4 @@
-package com.wildcard;
+package com.generics.wildcard.test;
 
 import java.util.List;
 
