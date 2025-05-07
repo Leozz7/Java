@@ -1,6 +1,5 @@
 package com.generics.wildcard.test;
 
-import com.generics.Consumido;
 import com.navigableMap.Consumidor;
 
 import java.util.ArrayList;
@@ -24,14 +23,14 @@ public class Gato extends Animal {
                 System.out.println(l);
             }
 
-            add(lista, new Consumido("Mariano"));
+            add(lista, new classeGenericaTest03.Consumido("Mariano"));
 
             for (Object l : lista) {
                 System.out.println(l);
             }
         }
 
-        public static void add(List lista, Consumido c) {
+        public static void add(List lista, classeGenericaTest03.Consumido c) {
           lista.add(c);
         }
     }
