@@ -1,7 +1,7 @@
-package com.generics.wildcard.test;
+package com.generics.test;
 
-import com.generics.wildcard.dominio.Carro;
-import com.generics.wildcard.dominio.service.CarroService;
+import com.generics.dominio.Carro;
+import com.generics.dominio.service.CarroService;
 
 public class classeGenericaTest01 {
     public static void main(String[] args) {

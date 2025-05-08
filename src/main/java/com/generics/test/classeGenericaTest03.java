@@ -1,8 +1,8 @@
-package com.generics.wildcard.test;
+package com.generics.test;
 
-import com.generics.wildcard.dominio.Barco;
-import com.generics.wildcard.dominio.Carro;
-import com.generics.wildcard.dominio.service.RentalService;
+import com.generics.dominio.Barco;
+import com.generics.dominio.Carro;
+import com.generics.dominio.service.RentalService;
 
 import java.util.ArrayList;
 import java.util.List;

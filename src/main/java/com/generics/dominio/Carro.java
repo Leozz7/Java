@@ -1,9 +1,9 @@
-package com.generics.wildcard.dominio;
+package com.generics.dominio;
 
-public class Barco {
+public class Carro {
     private String nome;
 
-    public Barco(String nome) {
+    public Carro(String nome) {
         this.nome = nome;
     }
 
@@ -17,7 +17,7 @@ public class Barco {
 
     @Override
     public String toString() {
-        return "Barco{" +
+        return "Carro{" +
                 "nome='" + nome + '\'' +
                 '}';
     }

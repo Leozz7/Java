@@ -1,6 +1,6 @@
-package com.generics.wildcard.dominio.service;
+package com.generics.dominio.service;
 
-import com.generics.wildcard.dominio.Barco;
+import com.generics.dominio.Barco;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,9 +1,6 @@
-package com.generics.wildcard.dominio.service;
-
-import com.generics.wildcard.dominio.Carro;
+package com.generics.dominio.service;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class RentalService<TIPO> {
     private ArrayList<TIPO> objetosDisponiveis;

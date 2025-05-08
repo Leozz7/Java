@@ -1,7 +1,7 @@
-package com.generics.wildcard.test;
+package com.generics.test;
 
-import com.generics.wildcard.dominio.Barco;
-import com.generics.wildcard.dominio.service.BarcoService;
+import com.generics.dominio.Barco;
+import com.generics.dominio.service.BarcoService;
 
 public class classeGenericaTest02 {
     public static void main(String[] args) {

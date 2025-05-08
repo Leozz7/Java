@@ -1,4 +1,4 @@
-package com.generics.wildcard.test;
+package com.generics.test;
 
 public class Cachorro extends Animal{
 
