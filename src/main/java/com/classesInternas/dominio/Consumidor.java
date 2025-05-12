@@ -27,6 +27,7 @@ public class Consumidor {
                 '}';
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hashCode(id);
