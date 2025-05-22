@@ -6,6 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 public class teste03 {
@@ -15,7 +16,8 @@ public class teste03 {
 
         System.out.println(filtrarCarro(c, car -> car.getCor().equalsIgnoreCase("Azul")));
         System.out.println(filtrarCarro(c, car -> car.getAno() < 2015));
-        System.out.println(filtrarCarro(c, car -> car.getNome().equalsIgnoreCase("Meca")));
+        System.out.println(filtrarCarro(c, carro -> carro.getNome().equalsIgnoreCase("Meca")));
+
     }
 
     private static <T> List<T> filtrarCarro(List<T> l, Predicate<T> predicate) {
