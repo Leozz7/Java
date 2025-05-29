@@ -17,7 +17,7 @@ public class test02 {
 
     public static void main(String[] args) {
         lm.stream()
-                .sorted(Comparator.comparing(LigthNovel::getPreco))
+                .sorted(Comparator.comparing(LigthNovel::getNome))
                 .distinct()
                 .forEach(System.out::println);
     }
