@@ -5,7 +5,6 @@ import com.streams.dominio.LigthNovel;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class test01 {
     public static void main(String[] args) {
@@ -20,7 +19,8 @@ public class test01 {
 
 
         System.out.println(lm.stream()
-                .sorted(Comparator.comparing(LigthNovel::getNome))
+                .sorted(Comparator.comparing(LigthNovel::getNome)
+                        .thenComparing(LigthNovel::getNome))
                 .map(LigthNovel::getNome)
                 .limit(3)
                 .toList());
