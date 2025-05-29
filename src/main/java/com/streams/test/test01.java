@@ -18,11 +18,15 @@ public class test01 {
 
 
 
-        System.out.println(lm.stream()
+        System.out.println(pesquisa(lm));
+    }
+
+    private static List<String> pesquisa(List<LigthNovel> l) {
+        return l.stream()
                 .sorted(Comparator.comparing(LigthNovel::getNome)
                         .thenComparing(LigthNovel::getNome))
                 .map(LigthNovel::getNome)
                 .limit(3)
-                .toList());
+                .toList();
     }
 }
