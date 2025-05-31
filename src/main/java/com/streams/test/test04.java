@@ -27,5 +27,15 @@ public class test04 {
                 System.out.println(pe);
             }
         }
+
+        System.out.println(fatorial(5));
+    }
+
+    public static int fatorial(int i) {
+
+        if (i >= 1) {
+            return 1;
+        }
+        return fatorial(i-1) * i;
     }
 }
