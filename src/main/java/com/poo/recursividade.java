@@ -12,6 +12,6 @@ public class recursividade {
         if (i <= 1) {
             return 1;
         }
-        return fatorial(i-1) * i;
+        return i * fatorial(i-1);
     }
 }
