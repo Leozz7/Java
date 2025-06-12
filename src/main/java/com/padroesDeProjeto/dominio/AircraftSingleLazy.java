@@ -3,12 +3,12 @@ package com.padroesDeProjeto.dominio;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AirCraftSingleEager {
-    private static final AirCraftSingleEager INSTANCE = new AirCraftSingleEager("767-900");
+public class AircraftSingleLazy {
+    private static AircraftSingleLazy INSTANCE;
     private final Set<String> assentos = new HashSet<>();
     private final String name;
 
-    private AirCraftSingleEager(String name) {
+    private AircraftSingleLazy(String name) {
         this.name = name;
     }
 
@@ -17,7 +17,10 @@ public class AirCraftSingleEager {
         assentos.add("1B");
     }
 
-    public static AirCraftSingleEager getINSTANCE() {
+    public static AircraftSingleLazy getINSTANCE() {
+        if (INSTANCE == null) {
+            INSTANCE = new AircraftSingleLazy("767-900");
+        }
         return INSTANCE;
     }
 
