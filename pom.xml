@@ -5,6 +5,24 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.recursividade</groupId>
+    <artifactId>aprendendo</artifactId> <!-- Escolha entre "estudoJava" ou "aprendendo" -->
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>24.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
@@ -18,29 +36,4 @@
             </plugin>
         </plugins>
     </build>
-    <<<<<<< HEAD
-    <artifactId>estudoJava</artifactId>
-=======
-    <artifactId>aprendendo</artifactId>
->>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
-    <version>1.0-SNAPSHOT</version>
-
-    <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-<<<<<<< HEAD
-    <dependencies>
-        <dependency>
-            <groupId>org.jetbrains</groupId>
-            <artifactId>annotations</artifactId>
-            <version>24.1.0</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
-=======
-    
->>>>>>> ddec0caf223e83374193ae749f4a8f5d1371ab7d
 </project>
