@@ -13,4 +13,13 @@ public class ProducerService {
         }
         ProducerRepository.delete(id);
     }
+
+    public static void update(Producer producer) {
+        if (producer.getId() <= 0) {
+            throw new IllegalArgumentException("O id esta incorreto");
+        }
+        ProducerRepository.update(producer);
+    }
+
+
 }

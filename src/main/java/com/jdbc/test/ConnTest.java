@@ -6,6 +6,7 @@ import com.jdbc.services.ProducerService;
 public class ConnTest {
     public static void main(String[] args) {
         //ProducerService.save(Producer.builder().nome("Teste").build());
-        ProducerService.delete(4);
+        //ProducerService.delete(4);
+        ProducerService.update(Producer.builder().id(1).nome("Leandro").build());
     }
 }

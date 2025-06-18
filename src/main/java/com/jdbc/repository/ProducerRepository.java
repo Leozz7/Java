@@ -47,7 +47,7 @@ public class ProducerRepository {
     }
 
     public static void update(Producer p) {
-        String sql = "UPDATE `anime_store`.`producer` SET `?` = 'Mauricio' WHERE (`id` = '?');";
+        String sql = "UPDATE producer SET nome = ? WHERE id = ?";
 
         try (Connection conn = Conexao.getConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
