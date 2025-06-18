@@ -45,4 +45,26 @@ public class ProducerRepository {
             log.error("Eror ao deletar o Producer{}", e.getMessage());
         }
     }
+
+    public static void update(Producer p) {
+        String sql = "UPDATE `anime_store`.`producer` SET `?` = 'Mauricio' WHERE (`id` = '?');";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, p.getNome());
+            ps.setInt(2, p.getId());
+
+            if (ps.executeUpdate() > 0) {
+                log.info("Producer atualizado com sucesso!");
+            } else {
+                log.error("Erro ao atualizar o producer");
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao atualizar o Producer{}", e.getMessage());
+        }
+    }
+
+
+
 }
