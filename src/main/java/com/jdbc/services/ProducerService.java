@@ -8,18 +8,18 @@ public class ProducerService {
         ProducerRepository.save(producer);
     }
     public static void delete(Integer id) {
-        if (id <= 0) {
-            throw new IllegalArgumentException("O id inserido esta incorreto");
-        }
+        validacaoID(id);
         ProducerRepository.delete(id);
     }
 
     public static void update(Producer producer) {
-        if (producer.getId() <= 0) {
-            throw new IllegalArgumentException("O id esta incorreto");
-        }
+        validacaoID(producer.getId());
         ProducerRepository.update(producer);
     }
 
-
+    private static void validacaoID(Integer id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("O id esta incorreto");
+        }
+    }
 }
