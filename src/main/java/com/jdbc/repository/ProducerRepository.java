@@ -27,4 +27,22 @@ public class ProducerRepository {
             log.error("Eror ao adicionar o Producer{}", e.getMessage());
         }
     }
+
+    public static void delete(Integer id) {
+        String sql = "DELETE FROM producer WHERE id = ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            if (ps.executeUpdate() > 0) {
+                log.info("Producer deletado com sucesso!");
+            } else {
+                log.error("Erro ao deletar o producer");
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao deletar o Producer{}", e.getMessage());
+        }
+    }
 }

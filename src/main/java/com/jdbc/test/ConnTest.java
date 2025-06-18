@@ -1,12 +1,11 @@
 package com.jdbc.test;
 
 import com.jdbc.model.Producer;
-import com.jdbc.repository.ProducerRepository;
-
-import java.util.Scanner;
+import com.jdbc.services.ProducerService;
 
 public class ConnTest {
     public static void main(String[] args) {
-        ProducerRepository.save(Producer.builder().nome("Teste").build());
+        //ProducerService.save(Producer.builder().nome("Teste").build());
+        ProducerService.delete(4);
     }
 }
