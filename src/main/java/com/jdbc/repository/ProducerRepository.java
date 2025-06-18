@@ -1,6 +1,7 @@
-package com.jdbc.DAO;
+package com.jdbc.repository;
 
 import com.jdbc.conn.Conexao;
+import com.jdbc.model.Producer;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
@@ -8,14 +9,14 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @Log4j2
-public class ProducerDAO {
-    public void adicionarProducer(String nome) {
+public class ProducerRepository {
+    public static void save(Producer producer) {
         String sql = "INSERT INTO producer (nome) VALUES (?)";
 
         try (Connection conn = Conexao.getConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            ps.setString(1, nome);
+            ps.setString(1, producer.getNome());
 
             if (ps.executeUpdate() > 0) {
                 log.info("Producer adicionado com sucesso!");
