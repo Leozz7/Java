@@ -10,7 +10,7 @@ public class ConnTest {
         //ProducerService.update(Producer.builder().id(1).nome("Leandro").build());
         //ProducerService.findAll()
         //        .forEach(System.out::println);
-        ProducerService.findName("Leandro")
-                .forEach(System.out::println);
+        //ProducerService.findName("Leandro")
+        //        .forEach(System.out::println);
     }
 }
