@@ -4,9 +4,9 @@ import com.jdbc.conn.Conexao;
 import com.jdbc.model.Producer;
 import lombok.extern.log4j.Log4j2;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j2
 public class ProducerRepository {
@@ -65,6 +65,24 @@ public class ProducerRepository {
         }
     }
 
+    public static List<Producer> findAll() {
+        List<Producer> producers = new ArrayList<>();
+        String sql = "SELECT * FROM producer";
+
+        try (Connection conn = Conexao.getConexao();
+             Statement ps = conn.createStatement();
+             ResultSet rs = ps.executeQuery(sql)) {
+        while (rs.next()) {
+         producers.add(Producer.builder()
+                 .id(rs.getInt("id"))
+                 .nome(rs.getString("nome"))
+                 .build());
+        }
+        } catch (SQLException e) {
+            log.error("Eror ao buscar o Producer{}", e.getMessage());
+        }
+        return producers;
+    }
 
 
 }
