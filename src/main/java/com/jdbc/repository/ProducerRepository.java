@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Log4j2
 public class ProducerRepository {
@@ -78,6 +79,27 @@ public class ProducerRepository {
                  .nome(rs.getString("nome"))
                  .build());
         }
+        } catch (SQLException e) {
+            log.error("Eror ao buscar o Producer{}", e.getMessage());
+        }
+        return producers;
+    }
+
+    public static List<Producer> findName(String name) {
+        List<Producer> producers = new ArrayList<>();
+        String sql = "SELECT * FROM producer WHERE nome LIKE ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                producers.add(Producer.builder()
+                        .id(rs.getInt("id"))
+                        .nome(rs.getString("nome"))
+                        .build());
+            }
         } catch (SQLException e) {
             log.error("Eror ao buscar o Producer{}", e.getMessage());
         }

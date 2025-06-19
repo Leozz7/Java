@@ -24,6 +24,11 @@ public class ProducerService {
         return ProducerRepository.findAll();
     }
 
+    public static List<Producer> findName(String name) {
+        verificarLista(ProducerRepository.findName(name));
+        return ProducerRepository.findName(name);
+    }
+
     private static void verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");

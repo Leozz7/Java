@@ -8,7 +8,9 @@ public class ConnTest {
         //ProducerService.save(Producer.builder().nome("Teste").build());
         //ProducerService.delete(4);
         //ProducerService.update(Producer.builder().id(1).nome("Leandro").build());
-        ProducerService.findAll()
+        //ProducerService.findAll()
+        //        .forEach(System.out::println);
+        ProducerService.findName("Leandro")
                 .forEach(System.out::println);
     }
 }
