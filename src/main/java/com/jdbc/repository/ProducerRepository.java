@@ -74,10 +74,7 @@ public class ProducerRepository {
              Statement ps = conn.createStatement();
              ResultSet rs = ps.executeQuery(sql)) {
         while (rs.next()) {
-         producers.add(Producer.builder()
-                 .id(rs.getInt("id"))
-                 .nome(rs.getString("nome"))
-                 .build());
+         producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
         }
         } catch (SQLException e) {
             log.error("Eror ao buscar o Producer{}", e.getMessage());
@@ -95,10 +92,7 @@ public class ProducerRepository {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                producers.add(Producer.builder()
-                        .id(rs.getInt("id"))
-                        .nome(rs.getString("nome"))
-                        .build());
+                producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException e) {
             log.error("Eror ao buscar o Producer{}", e.getMessage());
@@ -163,5 +157,30 @@ public class ProducerRepository {
         } catch (SQLException e) {
             log.error("Erro ao buscar os dados do Diver{}", e.getMessage());
         }
+    }
+
+    public static void showTypeScrollWorking() {
+        String sql = "SELECT * FROM producer;";
+
+        try (Connection conn = Conexao.getConexao();
+             Statement ps = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            ResultSet rs = ps.executeQuery(sql);
+            log.info("Primeira linha? '{}'", rs.first());
+            log.info("Numero da Linha '{}'", rs.getRow());
+
+            log.info("Ultima linha? '{}'", rs.last());
+            log.info("Numero da Ultima linha '{}'", rs.getRow());
+            log.info(criarProducer(rs.getInt("id"), rs.getString("nome")));
+
+        } catch (SQLException e) {
+            log.error("Eror ao exbir linha{}", e.getMessage());
+        }
+    }
+
+    private static Producer criarProducer(Integer id, String nome) {
+        return Producer.builder()
+                .id(id)
+                .nome(nome)
+                .build();
     }
 }

@@ -12,6 +12,7 @@ public class ConnTest {
         //ProducerService.findName("Leandro")
         //        .forEach(System.out::println);
         // ProducerService.showMetaData();
-        ProducerService.showDriverMetaData();
+        //ProducerService.showDriverMetaData();
+        ProducerService.showTypeScrollWorking();
     }
 }
