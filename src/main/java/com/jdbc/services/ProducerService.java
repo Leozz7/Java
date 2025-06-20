@@ -41,6 +41,16 @@ public class ProducerService {
         ProducerRepository.showTypeScrollWorking();
     }
 
+    public static List<Producer> findAllUpperCase() {
+        verificarLista(ProducerRepository.findAllUpperCase());
+        return ProducerRepository.findAllUpperCase();
+    }
+
+    public static List<Producer> findNameAndUpdate(String name) {
+        verificarLista(ProducerRepository.findNameAndUpdateToUpperCase(name));
+        return ProducerRepository.findNameAndUpdateToUpperCase(name);
+    }
+
     private static void verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");

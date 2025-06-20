@@ -74,7 +74,7 @@ public class ProducerRepository {
              Statement ps = conn.createStatement();
              ResultSet rs = ps.executeQuery(sql)) {
         while (rs.next()) {
-         producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
+            producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
         }
         } catch (SQLException e) {
             log.error("Eror ao buscar o Producer{}", e.getMessage());
@@ -167,6 +167,7 @@ public class ProducerRepository {
             ResultSet rs = ps.executeQuery(sql);
             log.info("Primeira linha? '{}'", rs.first());
             log.info("Numero da Linha '{}'", rs.getRow());
+            log.info(criarProducer(rs.getInt("id"), rs.getString("nome")));
 
             log.info("Ultima linha? '{}'", rs.last());
             log.info("Numero da Ultima linha '{}'", rs.getRow());
@@ -175,6 +176,41 @@ public class ProducerRepository {
         } catch (SQLException e) {
             log.error("Eror ao exbir linha{}", e.getMessage());
         }
+    }
+
+    public static List<Producer> findAllUpperCase() {
+        List<Producer> producers = new ArrayList<>();
+        String sql = "SELECT * FROM producer";
+
+        try (Connection conn = Conexao.getConexao();
+             Statement ps = conn.createStatement();
+             ResultSet rs = ps.executeQuery(sql)) {
+            while (rs.next()) {
+                producers.add(criarProducer(rs.getInt("id"), rs.getString("nome").toUpperCase()));
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao buscar o Producer{}", e.getMessage());
+        }
+        return producers;
+    }
+
+    public static List<Producer> findNameAndUpdateToUpperCase(String name) {
+        List<Producer> producers = new ArrayList<>();
+        String sql = "SELECT * FROM producer WHERE nome LIKE '%%%s%%'"
+                .formatted(name);
+
+        try (Connection conn = Conexao.getConexao();
+             Statement ps = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = ps.executeQuery(sql)) {
+            while (rs.next()) {
+                rs.updateString("nome", rs.getString("nome").toUpperCase());
+                rs.updateRow();
+                producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao buscar o Producer{}", e.getMessage());
+        }
+        return producers;
     }
 
     private static Producer criarProducer(Integer id, String nome) {
