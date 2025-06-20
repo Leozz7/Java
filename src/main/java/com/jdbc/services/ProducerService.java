@@ -33,6 +33,10 @@ public class ProducerService {
         ProducerRepository.showMetaData();
     }
 
+    public static void showDriverMetaData() {
+        ProducerRepository.showDriverMetaData();
+    }
+
     private static void verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");

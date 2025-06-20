@@ -114,7 +114,6 @@ public class ProducerRepository {
             ResultSet rs = ps.executeQuery();
             ResultSetMetaData rm = rs.getMetaData();
 
-            rs.next();
             int column = rm.getColumnCount();
             log.info("Quantidade de colunas: '{}'", column);
             for (int i = 1; i <= column; i++) {
@@ -124,7 +123,45 @@ public class ProducerRepository {
                 log.info("Tipo da Coluna: '{}'", rm.getColumnType(i));
             }
         } catch (SQLException e) {
-            log.error("Eror ao buscar o Producer{}", e.getMessage());
+            log.error("Erro ao buscar o os dados{}", e.getMessage());
+        }
+    }
+
+    public static void showDriverMetaData() {
+
+        try (Connection conn = Conexao.getConexao()){
+            DatabaseMetaData dt = conn.getMetaData();
+
+            if (dt.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                if (dt.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY)) {
+                    log.info("Suporta CONCUR_READ_ONLY");
+                }
+            }
+
+            if (dt.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                if (dt.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.TYPE_SCROLL_INSENSITIVE)) {
+                    log.info("Suporta TYPE_SCROLL_INSENSITIVE");
+                }
+            }
+
+            if (dt.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                if (dt.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.TYPE_SCROLL_SENSITIVE)) {
+                    log.info("Suporta TYPE_SCROLL_SENSITIVE");
+                }
+            }
+
+            if (dt.supportsResultSetType(ResultSet.TYPE_FORWARD_ONLY)) {
+                log.info("Suporta TYPE_FORWARD_ONLY");
+                if (dt.supportsResultSetConcurrency(ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_UPDATABLE)) {
+                    log.info("Suporta CONCUR_UPDATABLE");
+                }
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao buscar os dados do Diver{}", e.getMessage());
         }
     }
 }
