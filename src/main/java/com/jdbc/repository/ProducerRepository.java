@@ -106,5 +106,25 @@ public class ProducerRepository {
         return producers;
     }
 
+    public static void showMetaData() {
+        String sql = "SELECT * FROM producer";
 
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            ResultSetMetaData rm = rs.getMetaData();
+
+            rs.next();
+            int column = rm.getColumnCount();
+            log.info("Quantidade de colunas: '{}'", column);
+            for (int i = 1; i <= column; i++) {
+                log.info("Nome da Tabela: '{}'", rm.getTableName(i));
+                log.info("Nome da Coluna: '{}'", rm.getColumnName(i));
+                log.info("Tamanho da Coluna: '{}'", rm.getColumnDisplaySize(i));
+                log.info("Tipo da Coluna: '{}'", rm.getColumnType(i));
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao buscar o Producer{}", e.getMessage());
+        }
+    }
 }

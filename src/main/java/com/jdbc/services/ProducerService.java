@@ -29,6 +29,10 @@ public class ProducerService {
         return ProducerRepository.findName(name);
     }
 
+    public static void showMetaData() {
+        ProducerRepository.showMetaData();
+    }
+
     private static void verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");

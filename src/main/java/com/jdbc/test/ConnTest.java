@@ -1,6 +1,5 @@
 package com.jdbc.test;
 
-import com.jdbc.model.Producer;
 import com.jdbc.services.ProducerService;
 
 public class ConnTest {
@@ -12,5 +11,6 @@ public class ConnTest {
         //        .forEach(System.out::println);
         //ProducerService.findName("Leandro")
         //        .forEach(System.out::println);
+        ProducerService.showMetaData();
     }
 }
