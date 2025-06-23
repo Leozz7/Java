@@ -30,6 +30,22 @@ public class ProducerRepositoryRowSet {
         return producers;
     }
 
+    public static void updateJdbcRowsSet(Producer p) {
+        String sql = "SELECT * FROM producer WHERE id = ?";
+        try (JdbcRowSet jrs = Conexao.getJDBCRowSet()){
+            jrs.setCommand(sql);
+            jrs.setInt(1, p.getId());
+            jrs.execute();
+
+            if (!jrs.next()) return;
+            jrs.updateString("nome", p.getNome());
+            jrs.updateRow();
+
+        } catch (SQLException e) {
+            log.info(STR."Erro ao executar o comando\{e.getMessage()}");
+        }
+    }
+
     private static Producer criarProducer(Integer id,String name) {
         return Producer.builder().id(id).nome(name).build();
     }
