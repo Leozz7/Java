@@ -21,13 +21,11 @@ public class ProducerService {
     }
 
     public static List<Producer> findAll() {
-        Validacoes.verificarLista(ProducerRepository.findAll());
-        return ProducerRepository.findAll();
+        return Validacoes.verificarLista(ProducerRepository.findAll());
     }
 
     public static List<Producer> findName(String name) {
-        Validacoes.verificarLista(ProducerRepository.findName(name));
-        return ProducerRepository.findName(name);
+        return Validacoes.verificarLista(ProducerRepository.findName(name));
     }
 
     public static void showMetaData() {
@@ -43,18 +41,15 @@ public class ProducerService {
     }
 
     public static List<Producer> findAllUpperCase() {
-        Validacoes.verificarLista(ProducerRepository.findAllUpperCase());
-        return ProducerRepository.findAllUpperCase();
+        return Validacoes.verificarLista(ProducerRepository.findAllUpperCase());
     }
 
     public static List<Producer> findNameAndUpdate(String name) {
-        Validacoes.verificarLista(ProducerRepository.findNameAndUpdateToUpperCase(name));
-        return ProducerRepository.findNameAndUpdateToUpperCase(name);
+        return Validacoes.verificarLista(ProducerRepository.findNameAndUpdateToUpperCase(name));
     }
 
     public static List<Producer> findNameAndInsert(String name) {
-        Validacoes.verificarLista(ProducerRepository.findNameAndInsertRow(name));
-        return ProducerRepository.findNameAndInsertRow(name);
+        return Validacoes.verificarLista(ProducerRepository.findNameAndInsertRow(name));
     }
 
     public static void deletName(String name) {

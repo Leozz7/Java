@@ -5,10 +5,11 @@ import com.jdbc.model.Producer;
 import java.util.List;
 
 public class Validacoes {
-    public static void verificarLista(List<Producer> p) {
+    public static List<Producer> verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");
         }
+        return p;
     }
 
     public static void validacaoID(Integer id) {
