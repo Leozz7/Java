@@ -24,7 +24,6 @@ public class atvdTeste {
                errou(numEsco, numAle);
             }
         }
-
         scanner.close();
     }
 

@@ -47,6 +47,24 @@ public class ProducerRepository {
         }
     }
 
+    public static void deletebyName(String name) {
+        String sql = "DELETE FROM producer WHERE nome LIKE ?";
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, "%"+name+"%");
+
+            if (ps.executeUpdate() > 0) {
+                log.info("Producer deletado com sucesso!");
+            } else {
+                log.error("Erro ao deletar o producer");
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao deletar o Producer{}", e.getMessage());
+        }
+    }
+
     public static void update(Producer p) {
         String sql = "UPDATE producer SET nome = ? WHERE id = ?";
 
@@ -189,7 +207,7 @@ public class ProducerRepository {
                 producers.add(criarProducer(rs.getInt("id"), rs.getString("nome").toUpperCase()));
             }
         } catch (SQLException e) {
-            log.error("Eror ao buscar o Producer{}", e.getMessage());
+            log.error("Error ao buscar o Producer{}", e.getMessage());
         }
         return producers;
     }
@@ -208,10 +226,38 @@ public class ProducerRepository {
                 producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
             }
         } catch (SQLException e) {
-            log.error("Eror ao buscar o Producer{}", e.getMessage());
+            log.error("Eror ao buscar e atualizar o Producer{}", e.getMessage());
         }
         return producers;
     }
+
+    public static List<Producer> findNameAndInsertRow(String name) {
+        List<Producer> producers = new ArrayList<>();
+        String sql = "SELECT * FROM producer WHERE nome LIKE ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE)) {
+            ps.setString(1, "%" + name + "%");
+
+            try (ResultSet rs = ps.executeQuery()) {
+                boolean found = false;
+                while (rs.next()) {
+                    found = true;
+                    producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
+                }
+                if (!found) {
+                    rs.moveToInsertRow();
+                    rs.updateString("nome", name);
+                    rs.insertRow();
+                    rs.last();
+                    producers.add(criarProducer(rs.getInt("id"), rs.getString("nome")));
+                }
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao buscar e inserir o Producer: {}", e.getMessage());
+        }
+        return producers;
+    }
+
 
     private static Producer criarProducer(Integer id, String nome) {
         return Producer.builder()

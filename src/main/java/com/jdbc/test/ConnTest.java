@@ -15,6 +15,11 @@ public class ConnTest {
         //ProducerService.showDriverMetaData();
         //ProducerService.showTypeScrollWorking();
         // ProducerService.findAllUpperCase().forEach(System.out::println);
-        ProducerService.findNameAndUpdate("Le").forEach(System.out::println);
+        //ProducerService.findNameAndUpdate("Le").forEach(System.out::println);
+        //ProducerService.findNameAndInsert("Margarida").forEach(System.out::println);
+        //ProducerService.deletName("Mauricio");
+        //ProducerService.findAll().forEach(System.out::println);
+
+
     }
 }

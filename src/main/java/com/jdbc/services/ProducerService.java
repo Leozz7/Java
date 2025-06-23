@@ -51,6 +51,15 @@ public class ProducerService {
         return ProducerRepository.findNameAndUpdateToUpperCase(name);
     }
 
+    public static List<Producer> findNameAndInsert(String name) {
+        verificarLista(ProducerRepository.findNameAndInsertRow(name));
+        return ProducerRepository.findNameAndInsertRow(name);
+    }
+
+    public static void deletName(String name) {
+        ProducerRepository.deletebyName(name);
+    }
+
     private static void verificarLista(List<Producer> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista está vazia");
