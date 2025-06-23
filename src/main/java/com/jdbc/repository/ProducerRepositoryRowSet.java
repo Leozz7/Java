@@ -1,6 +1,7 @@
 package com.jdbc.repository;
 
 import com.jdbc.conn.Conexao;
+import com.jdbc.listener.CustomRowSetListener;
 import com.jdbc.model.Producer;
 import lombok.extern.log4j.Log4j2;
 
@@ -17,6 +18,7 @@ public class ProducerRepositoryRowSet {
         String sql = "SELECT * FROM producer WHERE nome LIKE ?";
 
         try (JdbcRowSet jrs = Conexao.getJDBCRowSet()) {
+            jrs.addRowSetListener(new CustomRowSetListener());
             jrs.setCommand(sql);
             jrs.setString(1, "%"+name+"%");
             jrs.execute();
@@ -33,6 +35,7 @@ public class ProducerRepositoryRowSet {
     public static void updateJdbcRowsSet(Producer p) {
         String sql = "SELECT * FROM producer WHERE id = ?";
         try (JdbcRowSet jrs = Conexao.getJDBCRowSet()){
+            jrs.addRowSetListener(new CustomRowSetListener());
             jrs.setCommand(sql);
             jrs.setInt(1, p.getId());
             jrs.execute();
