@@ -5,10 +5,13 @@ import com.jdbc.listener.CustomRowSetListener;
 import com.jdbc.model.Producer;
 import lombok.extern.log4j.Log4j2;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Log4j2
 public class ProducerRepositoryRowSet {
@@ -46,6 +49,28 @@ public class ProducerRepositoryRowSet {
 
         } catch (SQLException e) {
             log.info(STR."Erro ao executar o comando\{e.getMessage()}");
+        }
+    }
+
+    public static void updateCashedRowsSet(Producer p) {
+        String sql = "SELECT * FROM producer WHERE id = ?";
+        try (CachedRowSet crs = Conexao.getCachedRowSet();
+             Connection connection = Conexao.getConexao()){
+            connection.setAutoCommit(false);
+            crs.setCommand(sql);
+            crs.setInt(1, p.getId());
+            crs.execute(connection);
+
+            if (!crs.next()) return;
+            crs.updateString("nome", p.getNome());
+            crs.updateRow();
+            TimeUnit.SECONDS.sleep(10);
+            crs.acceptChanges();
+
+        } catch (SQLException e) {
+            log.info(STR."Erro ao executar o comando\{e.getMessage()}");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.jdbc.conn;
 
+import javax.sql.rowset.CachedRowSet;
 import javax.sql.rowset.JdbcRowSet;
 import javax.sql.rowset.RowSetProvider;
 import java.sql.Connection;
@@ -31,5 +32,9 @@ public class Conexao {
         } catch (ClassNotFoundException | SQLException e) {
             throw new SQLException("Erro ao conectar com o banco de dados: " + e.getMessage());
         }
+    }
+
+    public static CachedRowSet getCachedRowSet() throws SQLException {
+        return RowSetProvider.newFactory().createCachedRowSet();
     }
 }
