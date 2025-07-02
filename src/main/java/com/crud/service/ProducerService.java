@@ -19,4 +19,8 @@ public class ProducerService {
     public static List<Producer> findByName(String name) {
         return Validacoes.isEmpity(ProducerRepository.findByName(name));
     }
+
+    public static void delete(String name) {
+        ProducerRepository.delete(name);
+    }
 }

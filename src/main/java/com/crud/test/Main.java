@@ -23,8 +23,11 @@ public class Main {
                     break;
                 case 3:
                     ProducerService.findByName(perguntaNome()).forEach(System.out::println);
+                    break;
+                case 4:
+                    ProducerService.delete(perguntaNome());
             }
-        } while (esc != 4);
+        } while (esc != 5);
     }
 
     private static void menu() {
@@ -32,7 +35,8 @@ public class Main {
                 [1] Save
                 [2] FindAll
                 [3] FindByName
-                [4] Sair
+                [4] Delete
+                [5] Sair
                 """);
     }
 
