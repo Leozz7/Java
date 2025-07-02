@@ -28,6 +28,30 @@ public class ProducerRepository {
         }
     }
 
+    public static void saveTransaction(List<Producer> producers) {
+        try (Connection conn = Conexao.getConexao()) {
+            conn.setAutoCommit(false);
+             preparedStatementSaveTrasaction(conn, producers);
+             conn.commit();
+        } catch (SQLException e) {
+            log.error("Eror ao atualizar o Producer{}", e.getMessage());
+        }
+    }
+
+    private static void preparedStatementSaveTrasaction(Connection conn, List<Producer> producers) throws SQLException {
+        String sql = "INSERT INTO producer (nome) VALUES (?)";
+
+        for (Producer p : producers) {
+            try (PreparedStatement ps = conn.prepareStatement(sql)){
+                log.info("Saving Producer: " + p.getNome());
+                ps.setString(1, p.getNome());
+                ps.execute();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
     public static void delete(Integer id) {
         String sql = "DELETE FROM producer WHERE id = ?";
 
