@@ -7,11 +7,16 @@ import com.crud.validations.Validacoes;
 import java.util.List;
 
 public class ProducerService {
-    public List<Producer> findAll() {
+
+    public static void save(Producer p) {
+        ProducerRepository.save(p);
+    }
+
+    public static List<Producer> findAll() {
         return Validacoes.isEmpity(ProducerRepository.findAll());
     }
 
-    public List<Producer> findByName(String name) {
+    public static List<Producer> findByName(String name) {
         return Validacoes.isEmpity(ProducerRepository.findByName(name));
     }
 }

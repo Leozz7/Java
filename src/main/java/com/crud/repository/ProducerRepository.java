@@ -14,6 +14,21 @@ import java.util.List;
 
 @Log4j2
 public class ProducerRepository {
+    public static void save(Producer p) {
+        String sql = "INSERT INTO producer (nome) VALUES (?)";
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)){
+            ps.setString(1,p.getNome());
+
+            if (ps.executeUpdate() > 0) {
+                log.info("Producer adicionado com sucesso");
+            } else {
+                log.error("Erro ao adicionar o Producer");
+            }
+        } catch (Exception e) {
+            log.error("Erro ao adicionar o producer:" + p.getNome());
+        }
+    }
 
     public static List<Producer> findByName(String name) {
         List<Producer> producers = new ArrayList<>();
