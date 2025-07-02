@@ -20,7 +20,7 @@ public class ProducerService {
         return Validacoes.isEmpity(ProducerRepository.findByName(name));
     }
 
-    public static void delete(String name) {
-        ProducerRepository.delete(name);
+    public static void delete(Integer id) {
+        ProducerRepository.delete(id);
     }
 }

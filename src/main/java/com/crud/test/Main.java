@@ -25,7 +25,7 @@ public class Main {
                     ProducerService.findByName(perguntaNome()).forEach(System.out::println);
                     break;
                 case 4:
-                    ProducerService.delete(perguntaNome());
+                    ProducerService.delete(perguntarId());
             }
         } while (esc != 5);
     }
@@ -43,5 +43,10 @@ public class Main {
     private static String perguntaNome() {
         System.out.println("Digite o nome do Producer: ");
         return scanner.next();
+    }
+
+    private static Integer perguntarId() {
+        System.out.println("Digite o id do Producer: ");
+        return scanner.nextInt();
     }
 }

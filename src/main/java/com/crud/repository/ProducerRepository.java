@@ -65,18 +65,18 @@ public class ProducerRepository {
         return producers;
     }
 
-    public static void delete(String name) {
-        String sql = "DELETE producer WHERE nome LIKE ?";
+    public static void delete(Integer id) {
+        String sql = "DELETE FROM producer WHERE (id = ?);";
 
         try (Connection conn = Conexao.getConexao();
         PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, name);
+            ps.setInt(1, id);
 
             if (ps.executeUpdate() > 0) {
                 log.info("Producer excluido com sucesso");
             }
         } catch (Exception e) {
-            log.error("Erro ao excluir Producer" + name);
+            log.error("Erro ao excluir Producer com id" + id);
         }
     }
 
