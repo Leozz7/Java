@@ -7,7 +7,7 @@ import java.util.List;
 public class Validacoes {
     public static List<Producer> isEmpity(List<Producer> p) {
         if (p.isEmpty()) {
-            throw new RuntimeException("A lista esta vazia");
+            throw new IllegalArgumentException("A lista esta vazia");
         }
         return p;
     }

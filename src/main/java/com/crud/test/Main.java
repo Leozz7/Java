@@ -19,8 +19,9 @@ public class Main {
                 case 2 -> ProducerService.findAll().forEach(System.out::println);
                 case 3 -> ProducerService.findByName(perguntaNome()).forEach(System.out::println);
                 case 4 -> ProducerService.delete(perguntarId());
+                case 5 -> ProducerService.update(Producer.builder().id(perguntarId()).nome(perguntaNome()).build());
             }
-        } while (escolhaMenu != 5);
+        } while (escolhaMenu != 6);
     }
 
     private static void menu() {
@@ -29,7 +30,8 @@ public class Main {
                 [2] FindAll
                 [3] FindByName
                 [4] Delete
-                [5] Sair
+                [5] Update
+                [6] Sair
                 """);
     }
 

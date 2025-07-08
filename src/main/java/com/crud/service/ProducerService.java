@@ -23,4 +23,8 @@ public class ProducerService {
     public static void delete(Integer id) {
         ProducerRepository.delete(id);
     }
+
+    public static void update(Producer p) {
+        ProducerRepository.update(p);
+    }
 }

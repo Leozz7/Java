@@ -80,6 +80,24 @@ public class ProducerRepository {
         }
     }
 
+    public static void update(Producer producer) {
+        String sql = "UPDATE producer SET nome = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, producer.getNome());
+            ps.setInt(2, producer.getId());
+
+            if (ps.executeUpdate() > 0) {
+                log.info("O producer foi atualizado com sucesso");
+            } else {
+                log.error("Erro ao atualizar o producer");
+            }
+        } catch (SQLException e) {
+            log.error("Eror ao adicionar o Producer{}", e.getMessage());
+        }
+    }
+
     private static Producer criarProducer(int id,String name) {
         return Producer.builder().nome(name).id(id).build();
     }
