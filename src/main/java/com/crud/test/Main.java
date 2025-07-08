@@ -15,17 +15,10 @@ public class Main {
             esc = scanner.nextInt();
 
             switch (esc) {
-                case 1:
-                    ProducerService.save(Producer.builder().nome(perguntaNome()).build());
-                    break;
-                case 2:
-                    ProducerService.findAll().forEach(System.out::println);
-                    break;
-                case 3:
-                    ProducerService.findByName(perguntaNome()).forEach(System.out::println);
-                    break;
-                case 4:
-                    ProducerService.delete(perguntarId());
+                case 1 -> ProducerService.save(Producer.builder().nome(perguntaNome()).build());
+                case 2 -> ProducerService.findAll().forEach(System.out::println);
+                case 3 -> ProducerService.findByName(perguntaNome()).forEach(System.out::println);
+                case 4 -> ProducerService.delete(perguntarId());
             }
         } while (esc != 5);
     }
