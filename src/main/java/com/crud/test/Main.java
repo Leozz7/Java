@@ -9,18 +9,18 @@ public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        int esc = 0;
+        int escolhaMenu;
         do {
             menu();
-            esc = scanner.nextInt();
+            escolhaMenu = scanner.nextInt();
 
-            switch (esc) {
+            switch (escolhaMenu) {
                 case 1 -> ProducerService.save(Producer.builder().nome(perguntaNome()).build());
                 case 2 -> ProducerService.findAll().forEach(System.out::println);
                 case 3 -> ProducerService.findByName(perguntaNome()).forEach(System.out::println);
                 case 4 -> ProducerService.delete(perguntarId());
             }
-        } while (esc != 5);
+        } while (escolhaMenu != 5);
     }
 
     private static void menu() {
