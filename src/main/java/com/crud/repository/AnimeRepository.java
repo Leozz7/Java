@@ -53,7 +53,7 @@ public class AnimeRepository {
     }
 
     public static void delete(Integer id) {
-        String sql = "DELETE anime WHERE id = ?";
+        String sql = "DELETE FROM anime WHERE id = ?";
 
         try (Connection conn = Conexao.getConexao();
         PreparedStatement ps = conn.prepareStatement(sql)){

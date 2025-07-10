@@ -14,4 +14,8 @@ public class AnimeService {
     public static List<Anime> findAll() {
         return Validacoes.isEmpity(AnimeRepository.findAll());
     }
+
+    public static void delete(Integer id) {
+        AnimeRepository.delete(id);
+    }
 }
