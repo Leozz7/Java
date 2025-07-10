@@ -2,11 +2,15 @@ package com.crud.repository;
 
 import com.crud.conexao.Conexao;
 import com.crud.model.Anime;
+import com.crud.model.Producer;
 import lombok.extern.log4j.Log4j2;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j2
 public class AnimeRepository {
@@ -27,5 +31,28 @@ public class AnimeRepository {
          } catch (SQLException e) {
              log.error("Erro ao adicionar o anime" + e.getSQLState());
          }
+    }
+
+    public static List<Anime> findAll() {
+        String sql = "SELECT *  FROM animes";
+
+        List<Anime> animes = new ArrayList<>();
+
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                animes.add(criarAnime(rs.getString("nome"), rs.getInt("episodios"), ProducerRepository.findById(rs.getInt("id_producer"))));
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao procurar todos os Animes");
+        }
+
+        return animes;
+    }
+
+    public static Anime criarAnime(String nome, Integer episodios, Producer p) {
+        return Anime.builder().nome(nome).episodios(episodios).producer(p).build();
     }
 }

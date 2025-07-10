@@ -46,6 +46,22 @@ public class ProducerRepository {
         return producers;
     }
 
+    public static Producer findById(Integer id) {
+        Producer producer = null;
+        String sql = "SELECT * FROM producer WHERE id LIKE ?";
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                producer = criarProducer(rs.getInt("id"), rs.getString("nome"));
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao pesquisar o nome: " + id);
+        }
+        return producer;
+    }
+
     public static List<Producer> findAll() {
         List<Producer> producers = new ArrayList<>();
         String sql = "SELECT * FROM producer";
