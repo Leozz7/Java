@@ -52,6 +52,23 @@ public class AnimeRepository {
         return animes;
     }
 
+    public static void delete(Integer id) {
+        String sql = "DELETE anime WHERE id = ?";
+
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)){
+            ps.setInt(1, id);
+
+            if (ps.executeUpdate() > 0) {
+                log.info("Anime deletado com sucesso");
+            } else {
+                log.error("Erro ao deletar o anime");
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao executar query");
+        }
+    }
+
     public static Anime criarAnime(Integer id, String nome, Integer episodios, Producer p) {
         return Anime.builder().id(id).nome(nome).episodios(episodios).producer(p).build();
     }
