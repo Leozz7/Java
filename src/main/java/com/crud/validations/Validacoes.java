@@ -5,7 +5,7 @@ import com.crud.model.Producer;
 import java.util.List;
 
 public class Validacoes {
-    public static List<Producer> isEmpity(List<Producer> p) {
+    public static <T> List<T> isEmpity(List<T> p) {
         if (p.isEmpty()) {
             throw new IllegalArgumentException("A lista esta vazia");
         }

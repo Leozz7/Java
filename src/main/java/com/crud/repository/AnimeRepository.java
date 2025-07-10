@@ -34,7 +34,7 @@ public class AnimeRepository {
     }
 
     public static List<Anime> findAll() {
-        String sql = "SELECT *  FROM animes";
+        String sql = "SELECT * FROM anime";
 
         List<Anime> animes = new ArrayList<>();
 
@@ -43,16 +43,16 @@ public class AnimeRepository {
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
-                animes.add(criarAnime(rs.getString("nome"), rs.getInt("episodios"), ProducerRepository.findById(rs.getInt("id_producer"))));
+                animes.add(criarAnime(rs.getInt("id"), rs.getString("nome"), rs.getInt("episodios"), ProducerRepository.findById(rs.getInt("producer_id"))));
             }
         } catch (SQLException e) {
-            log.error("Erro ao procurar todos os Animes");
+            log.error("Erro ao exibir todos os Animes");
         }
 
         return animes;
     }
 
-    public static Anime criarAnime(String nome, Integer episodios, Producer p) {
-        return Anime.builder().nome(nome).episodios(episodios).producer(p).build();
+    public static Anime criarAnime(Integer id, String nome, Integer episodios, Producer p) {
+        return Anime.builder().id(id).nome(nome).episodios(episodios).producer(p).build();
     }
 }
