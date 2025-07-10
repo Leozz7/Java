@@ -15,6 +15,10 @@ public class AnimeService {
         return Validacoes.isEmpity(AnimeRepository.findAll());
     }
 
+    public static List<Anime> findByName(String name) {
+        return Validacoes.isEmpity(AnimeRepository.findByName(name));
+    }
+
     public static void delete(Integer id) {
         AnimeRepository.delete(id);
     }

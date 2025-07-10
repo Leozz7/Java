@@ -52,6 +52,27 @@ public class AnimeRepository {
         return animes;
     }
 
+    public static List<Anime> findByName(String name) {
+        String sql = "SELECT * FROM anime WHERE nome LIKE ?";
+
+        List<Anime> animes = new ArrayList<>();
+
+        try (Connection conn = Conexao.getConexao();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, name);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                animes.add(criarAnime(rs.getInt("id"), rs.getString("nome"), rs.getInt("episodios"), ProducerRepository.findById(rs.getInt("producer_id"))));
+            }
+        } catch (SQLException e) {
+            log.error("Erro ao exibir o Animes: " + name);
+        }
+
+        return animes;
+    }
+
     public static void delete(Integer id) {
         String sql = "DELETE FROM anime WHERE id = ?";
 
