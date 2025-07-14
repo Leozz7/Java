@@ -11,4 +11,11 @@ public class Validacoes {
         }
         return p;
     }
+
+    public static <T> T isNull(T n) {
+        if (n == null) {
+            throw new IllegalArgumentException("Nenhum valor retornado");
+        }
+        return n;
+    }
 }

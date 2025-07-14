@@ -10,7 +10,9 @@ public class test {
 
         //AnimeService.findAll().forEach(System.out::println);
 
-        AnimeService.findByName("Naruto").forEach(System.out::println);
+        //AnimeService.findByName("Naruto").forEach(System.out::println);
+
+        //System.out.println(AnimeService.findbyId(2));
 
         // AnimeService.delete(1);
     }
