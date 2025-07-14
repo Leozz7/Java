@@ -23,6 +23,10 @@ public class AnimeService {
         return Validacoes.isNull(AnimeRepository.findById(id));
     }
 
+    public static void update(Integer id, String parametro, Anime a) {
+        AnimeRepository.update(id, parametro, a);
+    }
+
     public static void delete(Integer id) {
         AnimeRepository.delete(id);
     }
