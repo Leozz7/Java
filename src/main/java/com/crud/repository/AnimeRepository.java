@@ -59,7 +59,7 @@ public class AnimeRepository {
 
         try (Connection conn = Conexao.getConexao();
              PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setString(1, name);
+            ps.setString(1, STR."%\{name}%");
 
             ResultSet rs = ps.executeQuery();
 
@@ -71,6 +71,27 @@ public class AnimeRepository {
         }
 
         return animes;
+    }
+
+    public static Anime findById(Integer id) {
+        String sql = "SELECT * FROM anime WHERE id = ?";
+
+        Anime anime = null;
+
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setInt(1 , id);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                anime = criarAnime(rs.getInt("id"), rs.getString("nome"), rs.getInt("episodios"), ProducerRepository.findById(rs.getInt("producer_id")));
+            }
+
+        } catch (SQLException e) {
+            log.error("Erro ao exibir o Anime do id: " + id);
+        }
+        return anime;
     }
 
     public static void delete(Integer id) {
