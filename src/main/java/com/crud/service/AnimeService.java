@@ -19,6 +19,10 @@ public class AnimeService {
         return Validacoes.isEmpity(AnimeRepository.findByName(name));
     }
 
+    public static Anime findbyId(Integer id) {
+        return Validacoes.isNull(AnimeRepository.findById(id));
+    }
+
     public static void delete(Integer id) {
         AnimeRepository.delete(id);
     }
