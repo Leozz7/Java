@@ -94,6 +94,30 @@ public class AnimeRepository {
         return anime;
     }
 
+    public static void update(Integer id, String parametro,Anime a) {
+        String sql = "UPDATE producer SET " + parametro + " = ? WHERE id = ?";
+
+        try (Connection conn = Conexao.getConexao();
+        PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            switch (parametro) {
+                case "nome": ps.setString(1, a.getNome());
+                break;
+
+                case "episodios": ps.setInt(1, a.getEpisodios());
+                break;
+
+                case "producer": ps.setInt(1, a.getProducer().getId());
+            }
+
+            ps.setInt(2, id);
+            ps.executeUpdate();
+
+        } catch (SQLException e) {
+            log.error("Erro ao atualizar o id:" + id);
+        }
+    }
+
     public static void delete(Integer id) {
         String sql = "DELETE FROM anime WHERE id = ?";
 
