@@ -94,20 +94,19 @@ public class AnimeRepository {
         return anime;
     }
 
-    public static void update(Integer id, String parametro,Anime a) {
-        String sql = "UPDATE producer SET " + parametro + " = ? WHERE id = ?";
+    public static void update(Integer id, String parametro,String valor) {
+        String sql = STR."UPDATE anime SET \{parametro} = ? WHERE id = ?";
 
         try (Connection conn = Conexao.getConexao();
         PreparedStatement ps = conn.prepareStatement(sql)) {
 
             switch (parametro) {
-                case "nome": ps.setString(1, a.getNome());
+                case "nome": ps.setString(1, valor);
                 break;
 
-                case "episodios": ps.setInt(1, a.getEpisodios());
-                break;
-
-                case "producer": ps.setInt(1, a.getProducer().getId());
+                case "episodios", "producer":
+                    ps.setInt(1, Integer.parseInt(valor));
+                    break;
             }
 
             ps.setInt(2, id);
