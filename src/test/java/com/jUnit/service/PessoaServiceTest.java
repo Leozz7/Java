@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PessoaServiceTest {
@@ -32,7 +34,19 @@ class PessoaServiceTest {
     @Test
     @DisplayName("Retornou um NullPoiterException")
     void verificadorIdada_NullPointerException() {
-         assertThrows(NullPointerException.class,
+         assertThrows(IllegalArgumentException.class,
                 () -> PessoaService.verificadorIdade(null), "Pessoa não pode ser nula");
     }
+
+    @Test
+    @DisplayName("Retornou uma list apenas com adultos")
+    void filtroRemoveNaoAdultos_ReturnListApenasComAdultos() {
+        Pessoa p1 = Pessoa.builder().idade(17).build();
+        Pessoa p2 = Pessoa.builder().idade(18).build();
+        Pessoa p3 = Pessoa.builder().idade(21).build();
+        List<Pessoa> pessoaList = List.of(p1,p2,p3);
+        assertEquals(2, PessoaService.filtroRemoveNaoAdultos(pessoaList).size());
+
+    }
+
 }
