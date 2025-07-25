@@ -1,6 +1,9 @@
 package com.hash;
 
+import com.jUnit.dominio.Pessoa;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +22,6 @@ public class Main {
         }
 
         HashSet<Produto> produtos = new HashSet<>();
-
         produtos.add(new Produto(1, "Cabeçote", 20.0f));
         produtos.add(new Produto(2, "Rabeira", 15.3f));
 
