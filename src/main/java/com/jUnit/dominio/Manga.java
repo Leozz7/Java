@@ -1,11 +1,9 @@
 package com.jUnit.dominio;
 
-public record Manga(String name, int episodios) {
-    @Override
-    public String toString() {
-        return "Manga{" +
-                "name='" + name + '\'' +
-                ", episodios=" + episodios +
-                '}';
+import java.util.Objects;
+
+public record Manga<T>(String name, int episodios) {
+    public Manga {
+        Objects.requireNonNull(name);
     }
 }
