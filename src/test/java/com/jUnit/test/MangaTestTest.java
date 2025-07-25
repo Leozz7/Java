@@ -31,4 +31,10 @@ class MangaTestTest {
     public void verificarHashCode() {
         Assertions.assertEquals(manga1.hashCode(), manga2.hashCode());
     }
+
+    @Test
+    public void verificarNomeNulo() {
+        Assertions.assertThrows(NullPointerException.class,
+                () -> new Manga<>(null, 200));
+    }
 }
