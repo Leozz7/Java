@@ -37,4 +37,9 @@ class MangaTestTest {
         Assertions.assertThrows(NullPointerException.class,
                 () -> new Manga<>(null, 200));
     }
+
+    @Test
+    public void verificarRecord() {
+        Assertions.assertTrue(Manga.class.isRecord());
+    }
 }
