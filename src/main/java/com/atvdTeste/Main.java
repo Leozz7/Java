@@ -34,11 +34,9 @@ public class Main {
     }
 
     private static double calcularTotalDeValorNoEstoque(List<Produto> p) {
-        double total = 0;
-        for (Produto pro : p) {
-            total += pro.getPreco() * pro.getQuantidade();
-        }
-        return total;
+        return p.stream()
+                .mapToDouble(produto -> produto.getPreco() * produto.getQuantidade())
+                .sum();
     }
 
     private static Produto retornarProdutoComMaiorPreco(List<Produto> p) {
