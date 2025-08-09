@@ -20,7 +20,7 @@ class PessoaServiceTest {
         noAldulto = Pessoa.builder().idade(15).build();
     }
     @Test
-    @DisplayName("A pessoanão é adulto, tem a idade menor que 18")
+    @DisplayName("A pessoa não é adulto, tem a idade menor que 18")
     void verificadorIdade_ReturnFalse_IdadeMenorQue18() {
         assertFalse(PessoaService.verificadorIdade(noAldulto));
     }
