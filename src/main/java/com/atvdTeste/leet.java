@@ -27,4 +27,30 @@ public class leet {
 
         return num;
     }
+
+    public int removeElement(int[] nums, int val) {
+        int qtde = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == val) {
+                qtde--;
+            }
+        }
+        return qtde;
+    }
+
+    public static int strStr(String haystack, String needle) {
+        char[] c = String.valueOf(haystack).toCharArray();
+        char[] b = String.valueOf(needle).toCharArray();
+
+        for (int i = 0; i < Math.max(c.length, b.length); i++) {
+            if (c[i] != b[i]) {
+                return -1;
+            }
+        }
+        return 0;
+    }
+
+    public static int palavraMaior(char[] c, char[] b) {
+        return Math.max(c.length, b.length);
+    }
 }
