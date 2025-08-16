@@ -10,22 +10,17 @@ public class leet {
 
     public static int maximum69Number (int num) {
         char[] c = String.valueOf(num).toCharArray();
-        List<Character> numLetra = new ArrayList<>();
-        for (Character n : c) {
-            numLetra.add(n);
-        }
-        for (int i = 0; i < numLetra.size(); i++) {
-            if (numLetra.get(i) == '6') {
-                StringBuilder retorno = new StringBuilder();
-                numLetra.set(i, '9');
-                for (Character t : numLetra) {
+        StringBuilder retorno = new StringBuilder();
+
+        for (int i = 0; i < c.length; i++) {
+            if (c[i] == '6') {
+                c[i] = '9';
+                for (Character t : c) {
                     retorno.append(t);
                 }
-                return Integer.parseInt(String.valueOf(retorno));
             }
         }
-
-        return num;
+        return Integer.parseInt(String.valueOf(retorno));
     }
 
     public int removeElement(int[] nums, int val) {
